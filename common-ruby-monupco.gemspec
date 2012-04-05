@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Monupco::MonupcoBase::VERSION
   s.authors     = ["Svetlozar Argirov"]
   s.email       = ["zarrro@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/monupco/common-ruby-monupco"
   s.summary     = %q{Common module for Monupco ruby clients}
   s.description = %q{Common module for Monupco ruby clients. Not intended for direct use. Use a monupco-\<cloud_vendor\>-ruby gem instead. }
 
