@@ -14,7 +14,7 @@ module Monupco
 		  'app_type' => 'Ruby',
 		  'app_url'  => nil,
 		  'app_vendor' => nil,
-		  'pkg_type' => nil,
+		  'pkg_type' => 1,
 		  'installed' => [],
 		}	
 	
