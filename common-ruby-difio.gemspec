@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "common-ruby-monupco/version"
+require "common-ruby-difio/version"
 
 Gem::Specification.new do |s|
-  s.name        = "common-ruby-monupco"
-  s.version     = Monupco::MonupcoBase::VERSION
+  s.name        = "common-ruby-difio"
+  s.version     = Difio::DifioBase::VERSION
   s.authors     = ["Svetlozar Argirov"]
   s.email       = ["zarrro@gmail.com"]
-  s.homepage    = "http://github.com/monupco/common-ruby-monupco"
-  s.summary     = %q{Common module for Monupco ruby clients}
-  s.description = %q{Common module for Monupco ruby clients. Not intended for direct use. Use a monupco-\<cloud_vendor\>-ruby gem instead. }
+  s.homepage    = "http://github.com/difio/common-ruby-difio"
+  s.summary     = %q{Common module for Difio ruby clients}
+  s.description = %q{Common module for Difio ruby clients. Not intended for direct use. Use a difio-\<vendor\>-ruby gem instead. }
 
-  s.rubyforge_project = "common-ruby-monupco"
+  s.rubyforge_project = "common-ruby-difio"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

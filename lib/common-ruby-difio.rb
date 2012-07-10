@@ -1,12 +1,12 @@
-require "common-ruby-monupco/version"
+require "common-ruby-difio/version"
 require "bundler"
 require 'net/http'
 require 'net/https'
 require 'json'
 
-module Monupco
-	class MonupcoBase
-		@@monupco_url = "https://monupco-otb.rhcloud.com/application/register/"
+module Difio
+	class DifioBase
+		@@difio_url = "https://difio-otb.rhcloud.com/application/register/"
 		@@post_data = {
 		  'user_id' => nil,
 		  'app_name' => nil,
@@ -20,7 +20,7 @@ module Monupco
 	
 		def self.configure(options)
 			if options['url']
-				@@monupco_url = options['url']
+				@@difio_url = options['url']
 			end
 			@@post_data.each do |k,v|
 				@@post_data[k] = options[k] if options[k]
@@ -42,22 +42,22 @@ module Monupco
 			return JSON.dump(data)
 		end
 	
-		def post_to_monupco()
+		def post_to_difio()
 			gems = get_module_list()
 			json = get_deps_as_json(gems)
 			this_module = vendor_module = nil
 			gems.each do |m|
-				if m['n'] == "common-ruby-monupco"
+				if m['n'] == "common-ruby-difio"
 					this_module = m['n'] + '/' + m['v']
 				end
-				if m['n'] =~ /monupco-(.*?)-ruby/
+				if m['n'] =~ /difio-(.*?)-ruby/
 					vendor_module = m['n'] + '/' + m['v']
 				end
 			end
 			headers = {
 				'User-Agent' =>  vendor_module + ' ' + this_module
 			}			
-			uri = URI(@@monupco_url)
+			uri = URI(@@difio_url)
 			req = Net::HTTP::Post.new(uri.path,headers)
 			req.set_form_data({ 'json_data' => json})
 			http = Net::HTTP.new(uri.host, uri.port)
@@ -75,12 +75,12 @@ module Monupco
 				puts get_deps_as_json()
 				exit
 			end
-			result = post_to_monupco()
+			result = post_to_difio()
 			case result
 			when Net::HTTPSuccess
-				puts "Monupco: #{result.body}"
+				puts "difio: #{result.body}"
 			else
-				puts "Monupco: #{result.code} #{result.message}"
+				puts "difio: #{result.code} #{result.message}"
 			end
 		end
 	end
